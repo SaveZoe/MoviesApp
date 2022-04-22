@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/java/ru/savezoe/moviesapp/MainActivity.kt" value="0.9747292418772563" />
+        <entry key="app/src/main/java/ru/savezoe/moviesapp/screens/MainScreen.kt" value="0.25" />
+        <entry key="app/src/main/java/ru/savezoe/moviesapp/screens/SplashScreen.kt" value="0.25" />
       </map>
     </option>
   </component>
