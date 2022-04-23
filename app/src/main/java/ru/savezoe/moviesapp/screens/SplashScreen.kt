@@ -17,17 +17,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
+import ru.savezoe.moviesapp.MainViewModel
 import ru.savezoe.moviesapp.navigation.Screens
 import ru.savezoe.moviesapp.ui.theme.MoviesAppTheme
 
 @Composable
-fun SplashScreen(navController: NavController) {
+fun SplashScreen(navController: NavController, viewModel: MainViewModel) {
     var startAnimated by remember { mutableStateOf(false) }
     val alphaAnimation = animateFloatAsState(
         targetValue = if (startAnimated) 1f else 0f, animationSpec = tween(durationMillis = 3000)
     )
     LaunchedEffect(key1 = true) {
         startAnimated = true
+        viewModel.getAllMovies()
         delay(4000)
         navController.navigate(Screens.Main.route)
     }

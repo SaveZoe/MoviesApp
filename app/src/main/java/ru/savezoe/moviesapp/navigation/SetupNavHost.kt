@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import ru.savezoe.moviesapp.MainViewModel
 import ru.savezoe.moviesapp.screens.MainScreen
 import ru.savezoe.moviesapp.screens.SplashScreen
 import ru.savezoe.moviesapp.utils.Constants
@@ -15,13 +16,23 @@ sealed class Screens(val route: String) {
 }
 
 @Composable
-fun SetupNavHost(navController: NavHostController) {
+fun SetupNavHost(navController: NavHostController, viewModel: MainViewModel) {
     NavHost(
         navController = navController,
         startDestination = Screens.Splash.route
     ) {
-        composable(route = Screens.Splash.route) { SplashScreen(navController = navController) }
-        composable(route = Screens.Main.route) { MainScreen() }
+        composable(route = Screens.Splash.route) {
+            SplashScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
+        composable(route = Screens.Main.route) {
+            MainScreen(
+                navController = navController,
+                viewModel = viewModel
+            )
+        }
         composable(route = Screens.Details.route) {}
     }
 }
