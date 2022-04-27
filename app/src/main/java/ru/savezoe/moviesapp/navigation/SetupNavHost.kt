@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import ru.savezoe.moviesapp.MainViewModel
+import ru.savezoe.moviesapp.screens.DetailsScreen
 import ru.savezoe.moviesapp.screens.MainScreen
 import ru.savezoe.moviesapp.screens.SplashScreen
 import ru.savezoe.moviesapp.utils.Constants
@@ -33,6 +34,12 @@ fun SetupNavHost(navController: NavHostController, viewModel: MainViewModel) {
                 viewModel = viewModel
             )
         }
-        composable(route = Screens.Details.route) {}
+        composable(route = Screens.Details.route + "/{Id}") { navBackStackEntry ->
+            DetailsScreen(
+                navController = navController,
+                viewModel = viewModel,
+                itemId = navBackStackEntry.arguments?.getString("Id") ?: "1"
+            )
+        }
     }
 }
